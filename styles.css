@@ -1,0 +1,161 @@
+/* Basic styles */
+body {
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1; /* Reset default line-height */
+}
+
+/* Container for the whole layout */.container {
+    width: 1440px; /* As per Figma design */
+    margin: 0 auto; /* Center the layout */
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center; /* Vertically center items */
+    padding: 20px 107px;
+    justify-content: space-between; /* Space logo and nav/cart */
+}.logo {
+    font-size: 26px; /* Example style, customize as needed */
+    font-weight: 600;
+    text-decoration: none; /* Remove underline from logo link */
+    color: black; /* Example color */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 52px;
+}
+
+nav li {
+    display: inline-block; /* Needed for vertical alignment */
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 26px;
+}.cart-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}.cart-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #9FAE83;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px; /* Space between text and icon */
+}.cart-icon img {
+    width: 36px;
+    height: 36px;
+}.cart-text {
+    font-size: 26px;
+    margin-right: 10px; /* Space from the cart icon */
+}
+
+/* Hero Section */.hero {
+    background-color: #F0F7E3;
+    padding: 41px 29px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center; /* Vertically center content */
+}.hero-content {
+    flex: 1; /* Take up available space */
+    padding-left: 78px; /* Space from image */
+}.hero-title {
+    font-size: 150px;
+    font-weight: 500;
+    line-height: 140px;
+    margin-bottom: 20px; /* Space below title */
+}.hero-image {
+    width: 768px;
+    height: 817px;
+    border-radius: 23px;
+}
+
+/* Product Showcase */.product-showcase {
+    padding: 1124px 54px 0; /* Adjust top padding */
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 20px; /* Space between product items */
+}.product-item {
+    border-radius: 20px;
+    overflow: hidden; /* Hide overflowing image */
+    position: relative; /* For positioning overlay */
+}.product-image {
+    width: 100%;
+    display: block; /* Prevent image from creating extra space */
+}.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.77);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in width/height */
+}.overlay-text {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #5E6A2B; /* Example color */
+    text-align: center; /* Center text within overlay */
+}
+
+/* About Us Section */.about-us {
+    background-color: #EDF4EF;
+    /* Corrected padding values to be top, right, bottom, left */
+    padding: 3482px 67px 809px 67px; /* Adjust as needed */
+    border-radius: 20px;
+}
+.about-us-title {
+    font-size: 64px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 20px; /* Space below title */
+}
+
+/* Stats Section */.stats {
+    display: flex;
+    justify-content: space-around;
+    /* Corrected padding values to be top, right, bottom, left */
+    padding: 3747px 107px 0 107px; /* Adjust as needed */
+}.stat-item {
+    text-align: center;
+}.stat-number {
+    font-size: 90px;
+    font-weight: 600;
+}.stat-description {
+    font-size: 20px;
+}
+
+/* CTA Section */.cta {
+    /* Corrected padding values to be top, right, bottom, left */
+    padding: 3087px 856px 0 856px; /* Adjust as needed */
+}.cta-button {
+    background-color: #A8B080;
+    color: black;
+    font-size: 36px;
+    font-weight: 500;
+    padding: 15px 30px; /* Adjust padding */
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%; /* Prevent images from overflowing */
+    height: auto;
+}

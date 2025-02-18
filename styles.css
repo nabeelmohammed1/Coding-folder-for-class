@@ -61,101 +61,169 @@ nav a {
     margin-right: 10px; /* Space from the cart icon */
 }
 
-/* Hero Section */.hero {
+/* Hero Section */
+.hero {
     background-color: #F0F7E3;
     padding: 41px 29px;
     border-radius: 20px;
     display: flex;
-    align-items: center; /* Vertically center content */
-}.hero-content {
-    flex: 1; /* Take up available space */
-    padding-left: 78px; /* Space from image */
-}.hero-title {
-    font-size: 150px;
+    align-items: center;
+}
+
+.hero-content {
+    flex: 1;
+    padding-left: 78px;
+}
+
+.hero-title {
+    font-size: 80px; /* Adjusted font size */
     font-weight: 500;
-    line-height: 140px;
-    margin-bottom: 20px; /* Space below title */
-}.hero-image {
-    width: 768px;
-    height: 817px;
+    line-height: 80px; /* Adjusted line height */
+    margin-bottom: 20px;
+}
+
+.hero-image {
+    width: 50%; /* Adjusted width */
+    height: auto;
     border-radius: 23px;
 }
 
-/* Product Showcase */.product-showcase {
-    padding: 1124px 54px 0; /* Adjust top padding */
-    display: flex;
-    flex-wrap: wrap; /* Allow wrapping */
-    gap: 20px; /* Space between product items */
-}.product-item {
-    border-radius: 20px;
-    overflow: hidden; /* Hide overflowing image */
-    position: relative; /* For positioning overlay */
-}.product-image {
-    width: 100%;
-    display: block; /* Prevent image from creating extra space */
-}.product-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* Product Showcase */
+.product-showcase {
+    padding: 60px 54px 0;
+}
+
+.showcase-title {
+    font-size: 48px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    row-gap: 0px; /* No row gap */
+    column-gap: 20px; /* No column gap */
+}
+
+.product-item {
+    border-radius: 0px;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-image {
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.77);
-    backdrop-filter: blur(4px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box; /* Include padding in width/height */
-}.overlay-text {
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 30px;
-    color: #5E6A2B; /* Example color */
-    text-align: center; /* Center text within overlay */
+    object-fit: contain; /* Changed to cover to fill the cell */
 }
-
-/* About Us Section */.about-us {
-    background-color: #EDF4EF;
-    /* Corrected padding values to be top, right, bottom, left */
-    padding: 3482px 67px 809px 67px; /* Adjust as needed */
-    border-radius: 20px;
-}
-.about-us-title {
-    font-size: 64px;
-    font-weight: 500;
-    text-align: center;
-    margin-bottom: 20px; /* Space below title */
-}
-
-/* Stats Section */.stats {
-    display: flex;
-    justify-content: space-around;
-    /* Corrected padding values to be top, right, bottom, left */
-    padding: 3747px 107px 0 107px; /* Adjust as needed */
-}.stat-item {
-    text-align: center;
-}.stat-number {
-    font-size: 90px;
-    font-weight: 600;
-}.stat-description {
-    font-size: 20px;
-}
-
-/* CTA Section */.cta {
-    /* Corrected padding values to be top, right, bottom, left */
-    padding: 3087px 856px 0 856px; /* Adjust as needed */
-}.cta-button {
-    background-color: #A8B080;
-    color: black;
-    font-size: 36px;
-    font-weight: 500;
-    padding: 15px 30px; /* Adjust padding */
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-}
-
 img {
     max-width: 100%; /* Prevent images from overflowing */
     height: auto;
+}
+/* Call to Action Section */
+.call-to-action {
+    display: flex;
+    align-items: center;
+    padding: 80px 54px;
+    background-color: #E4F1E7; 
+    gap: 50px; /* Space between image and content */
+    border-radius: 10px; 
+    margin-top: 80px;
+}
+
+.cta-image {
+    width: 45%; /* Adjust width as needed */
+    height: auto;
+    border-radius: 10px; /* Rounded corners for the image */
+}
+
+.cta-content {
+    flex: 1; /* Takes up remaining space */
+    padding: 60px; /* Increased padding */
+    border-radius: 10px;
+
+}
+
+.cta-content h2 {
+    font-size: 36px; /* Adjust font size */
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #333; /* Darker heading color */
+}
+
+.cta-content p {
+    font-size: 18px; /* Adjust font size */
+    line-height: 1.6; /* Improved line height for readability */
+    color: #555; /* Slightly darker text color */
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #A8B080;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px; /* More rounded corners */
+    font-size: 18px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.cta-button:hover {
+    background-color: #A8B080; /* Darker green on hover */
+}
+
+.cta-image {
+    width: 40%;
+    height: auto;
+    margin-left: 50px;
+}
+
+/* Statistics Section */
+.statistics {
+    background-color: #EDF4EF; /* Light green background */
+    padding: 80px 54px;
+    text-align: center; /* Center align the content */
+    border-radius: 10px; 
+    margin-top: 80px;
+
+}.statistics-content {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack text on top of stats */
+    align-items: center;
+    
+}.statistics-text {
+    margin-bottom: 40px; /* Space between text and stats */
+
+}.statistics-text h2 {
+    font-size: 36px; /* Adjust font size as needed */
+    font-weight: 600;
+    margin-bottom: 20px;
+
+}.statistics-text p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+    max-width: 800px; /* Limit the width of the paragraph */
+
+}.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 30px; /* Adjust gap as needed */
+
+}.statistic {
+    text-align: center;
+
+}.stat-number {
+    font-size: 48px; /* Adjust font size as needed */
+    font-weight: 600;
+    color: #9FAE83;
+
+}.statistic p {
+    font-size: 18px;
 }

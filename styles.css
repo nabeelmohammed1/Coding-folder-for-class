@@ -227,3 +227,48 @@ img {
 }.statistic p {
     font-size: 18px;
 }
+
+/* Snack Kits Page */
+.vending-machine {
+    display: flex;
+    justify-content: left; /* Center horizontally */
+    align-items: flex-start; /* Align items to the top */
+    padding: 20px;
+    background-color: #E9F3D6; 
+    text-align: center; 
+    border-radius: 20px;
+}
+
+.vending-machine-image {
+    margin: 0 left; /* Center the image */
+}
+
+.vending-machine img {
+    max-width: 400px; /* Adjust as needed */
+    height: auto;
+    display: block; /* Prevents a small space below the image */
+}
+
+
+
+.snack-kits {
+    padding: 20px;
+    text-align: center; /* Center the text */
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.kit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+
+.kit-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+}

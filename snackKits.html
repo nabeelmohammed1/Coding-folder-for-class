@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Healthy Bites</title>
-    <link rel="stylesheet" href="styles.css">
+  <title>Healthy Bites</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <a href="index.html" class="logo">Healthy Bites</a>
-            <nav>
-                <ul>
-                    <li><a href="snackKits.html">Boxes</a></li>
-                    <li><a href="snackpage.html">About</a></li>
-                </ul>
-            </nav>
-            <div class="cart-container">
-                <a href="payment.html" class="cart-icon">
-                    <img src="images/shoopingcart.png" alt="Cart">
-                </a>
-            </div>
-        </header>
+  <div class="container">
+    <header>
+      <a href="index.html" class="logo">Healthy Bites</a>
+      <nav>
+        <ul>
+          <li><a href="snackKits.html">Boxes</a></li>
+          <li><a href="snackpage.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="cart-container">
+        <span class="cart-text">Cart</span>
+        <a href="payment.html" class="cart-icon">
+          <img src="images/shoopingcart.png" alt="Cart">
+        </a>
+      </div>
+    </header>
 
     <main>
         <section class="vending-machine">
@@ -29,24 +30,106 @@
             </div>
         </section>
 
-        <section class="snack-kits">
-            <h2>Signature Snack Kits</h2>
-
-            <div class="filters">
-                <button>Low Cal</button>
-                <button>Vegan</button>
-                <button>Dairy-Free</button>
-                <button>On-the-go</button>
+        <div id="snack-popup" class="popup">
+            <div class="popup-content">
+                <p>🎉 You got a free snack! 🎉</p>
+                <button id="close-popup">OK</button>
             </div>
+        </div>
 
-            <div class="kit-grid">
-                </div>
-        </section>
+      <section class="snack-kits">
+        <div class="snack-kits-text">Signature Snack Kits</div>
+
+        <div class="filters">
+          <button>All</button> 
+          <button>Low-Cal</button>
+          <button>Vegan</button>
+          <button>Dairy-Free</button>
+          <button>On-the-go</button>
+        </div>
+
+        <div class="kit-grid">
+
+          <div class="kit-card" data-filter="low-cal">
+            <div class="card-content">
+              <img src="images/snack1.png" alt="Snack 1">
+              <div class="price-container">
+                <p>$25.00</p>
+                <button class="order-button">
+                  <span class="order-text">Order Now</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="kit-card" data-filter="vegan">
+            <div class="card-content">
+              <img src="images/snack2.png" alt="Snack 2">
+              <div class="price-container">
+                <p>$35.00</p>
+                <button class="order-button">
+                  <span class="order-text">Order Now</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="kit-card" data-filter="on-the-go">
+            <div class="card-content">
+              <img src="images/snack3.png" alt="Snack 3">
+              <div class="price-container">
+                <p>$35.00</p>
+                <button class="order-button">
+                  <span class="order-text">Order Now</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="kit-card" data-filter="dairy-free">
+            <div class="card-content">
+              <img src="images/snack4.png" alt="Snack 4">
+              <div class="price-container">
+                <p>$20.00</p>
+                <button class="order-button">
+                  <span class="order-text">Order Now</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="kit-card" data-filter="dairy-free">
+            <div class="card-content">
+              <img src="images/snack5.png" alt="Snack 5">
+              <div class="price-container">
+                <p>$25.00</p>
+                <button class="order-button">
+                  <span class="order-text">Order Now</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="kit-card" data-filter="on-the-go">
+            <div class="card-content">
+              <img src="images/snack6.png" alt="Snack 6">
+              <div class="price-container">
+                <p>$30.00</p>
+                <button class="order-button">
+                  <span class="order-text">Order Now</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
     </main>
 
     <footer>
-        </footer>
+    </footer>
 
-    <script src="script.js"></script>
+    <script src="scripts.js"></script>
+  </div>
 </body>
 </html>

@@ -1,3 +1,21 @@
+/* Setting colour variables*/
+:root {
+    --primary-green: #9FAE83;
+    --light-green: #F0F7E3;
+    --very-light-green: #E4F1E7;
+    --extra-light-green: #EDF4EF;
+    --vending-light-green: #E9F3D6;
+    --filter-button-green: #CDD79F;
+    --filter-button-hover-green: #A8B578;
+    --cta-button-green: #A8B080;
+    --cta-button-hover-green: #90976f;
+    --black: #000;
+    --dark-gray: #333;
+    --medium-gray: #555;
+    --white: #fff;
+}
+
+
 /* Basic styles */
 body {
     font-family: 'DM Sans', sans-serif;
@@ -6,7 +24,8 @@ body {
     line-height: 1; /* Reset default line-height */
 }
 
-/* Container for the whole layout */.container {
+/* Container for the whole layout */
+.container {
     width: 1440px; /* As per Figma design */
     margin: 0 auto; /* Center the layout */
 }
@@ -22,7 +41,7 @@ header {
     font-size: 26px; /* Example style, customize as needed */
     font-weight: 600;
     text-decoration: none; /* Remove underline from logo link */
-    color: black; /* Example color */
+    color: var(--black);
 }
 
 nav ul {
@@ -53,7 +72,7 @@ nav a {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #9FAE83;
+    background-color: var(--primary-green);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,7 +91,7 @@ nav a {
 
 /* Hero Section */
 .hero {
-    background-color: #F0F7E3;
+    background-color:var(--light-green);
     padding: 41px 29px;
     border-radius: 20px;
     display: flex;
@@ -137,7 +156,7 @@ img {
     display: flex;
     align-items: center;
     padding: 80px 54px;
-    background-color: #E4F1E7; 
+    background-color:var(--extra-light-green);
     gap: 50px; /* Space between image and content */
     border-radius: 10px; 
     margin-top: 80px;
@@ -160,19 +179,19 @@ img {
     font-size: 36px; /* Adjust font size */
     font-weight: 600;
     margin-bottom: 30px;
-    color: #333; /* Darker heading color */
+    color: var(--dark-gray);
 }
 
 .cta-content p {
     font-size: 18px; /* Adjust font size */
     line-height: 1.6; /* Improved line height for readability */
-    color: #555; /* Slightly darker text color */
+    color: var(--medium-gray);
     margin-bottom: 40px;
 }
 
 .cta-button {
     display: inline-block;
-    background-color: #A8B080;
+    background-color:var(--cta-button-green);
     color: white;
     padding: 15px 30px;
     border: none;
@@ -184,7 +203,7 @@ img {
 }
 
 .cta-button:hover {
-    background-color: #A8B080; /* Darker green on hover */
+    background-color:var(--cta-button-hover-green); /* Darker green on hover */
 }
 
 .cta-image {
@@ -195,7 +214,7 @@ img {
 
 /* Statistics Section */
 .statistics {
-    background-color: #EDF4EF; /* Light green background */
+    background-color: var(--extra-light-green);
     padding: 80px 54px;
     text-align: center; /* Center align the content */
     border-radius: 10px; 
@@ -225,7 +244,7 @@ img {
 .statistics-text p {
     font-size: 18px;
     line-height: 1.6;
-    color: #555;
+    color: var(--medium-gray);
     max-width: 800px; /* Limit the width of the paragraph */
 
 }
@@ -259,7 +278,7 @@ img {
     justify-content: center;
     align-items: center; /* Align items vertically */
     padding: 20px;
-    background-color: #E9F3D6;
+    background-color: var(--vending-light-green);
     border-radius: 20px;
     margin-bottom: 40px;
     position: relative; /* Allows absolute positioning for button */
@@ -275,7 +294,7 @@ img {
 }
 
 .collect-button {
-    background-color: #CDD79F;
+    background-color:var(--filter-button-green);
     color: #000;
     border: none;
     border-radius: 50px;
@@ -292,7 +311,7 @@ img {
 }
 
 .collect-button:hover {
-    background-color: #A8B578;
+    background-color:var(--cta-button-green);
 }
 
 .popup {
@@ -349,7 +368,7 @@ img {
 }
 
 .filters button {
-    background-color: #CDD79F; /* Light green background */
+    background-color:var(--filter-button-green);
     color: #000; /* Black text */
     border: none;
     border-radius: 30px; /* Rounded corners */
@@ -361,7 +380,7 @@ img {
 }
 
 .filters button:hover {
-    background-color: #A8B578; /* Slightly darker green on hover */
+    background-color:var(--cta-button-green);
 }
 .kit-grid {
     display: grid;
@@ -398,8 +417,8 @@ img {
     z-index: 1; /* Ensure price is above the button */
 }
 .order-button {
-    background-color: #000; /* Black background */
-    color: white; /* White text */
+    background-color:var(--black);
+    color:var(--white);
     padding: 35px 70px;
     border: none;
     border-radius: 50px; /* Rounded corners */

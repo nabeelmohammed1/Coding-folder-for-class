@@ -306,30 +306,52 @@ img {
     justify-content: center;
     align-items: center;
 }
-
-.popup-content {
-    background: white;
+.popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #EDB8B2; 
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
     padding: 30px;
-    border-radius: 10px;
+    width: 80%; /* Adjust width as needed */
+    max-width: 500px; /* Maximum width */
     text-align: center;
-    font-size: 32px;
-    font-family: sans-serif;
-}
-
-.popup-content button {
-    background-color: #CDD79F;
-    color: black;
-    border: none;
-    border-radius: 30px;
+    z-index: 1000; /* Ensure it's on top */
+  }
+  
+  .popup-container img {
+    max-width: 100%; /* Image fits within the container */
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .popup-container h2 {
+    font-size: 2em; /* Adjust font size */
+    margin-bottom: 10px;
+  }
+  
+  .popup-container p {
+    font-size: 1.1em; /* Adjust font size */
+    margin-bottom: 20px;
+  }
+  
+  .popup-container button {
+    background-color: #000; /* Black button */
+    color: #fff; /* White text */
     padding: 15px 30px;
-    font-size: 24px;
+    border: none;
+    border-radius: 30px; /* Rounded button */
+    font-size: 1.1em;
     cursor: pointer;
-    margin-top: 20px;
-}
-
-.popup-content button:hover {
-    background-color: #A8B578;
-}
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .popup-container button:hover {
+    background-color: #333; /* Darker shade on hover */
+  }
+  
 
 .snack-kits {
     padding: 20px;

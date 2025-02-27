@@ -13,7 +13,8 @@
     --dark-gray: #333;
     --medium-gray: #555;
     --white: #fff;
-    --background-color: #EDB8B2; /Background color for the popup/
+    --background-color: #EDB8B2; /*Background color for the popup*/
+    --popupBackground: rgb(236, 236, 236, 0.74);
 }
 
 

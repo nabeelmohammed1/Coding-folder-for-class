@@ -16,8 +16,6 @@
     --background-color: #EDB8B2; /*Background color for the popup*/
     --popupBackground: rgb(236, 236, 236, 0.74);
 }
-
-
 /* Basic styles */
 body {
     font-family: 'DM Sans', sans-serif;
@@ -129,22 +127,7 @@ nav a {
     text-align: center;
     margin-bottom: 40px;
 }
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    row-gap: 0px; /* No row gap */
-    column-gap: 20px; /* No column gap */
-}
-
-.product-item {
-    border-radius: 0px;
-    overflow: hidden;
-    position: relative;
-}
-
-.product-image {
+.Product-Images {
     width: 100%;
     height: 100%;
     object-fit: contain; /* Changed to cover to fill the cell */
@@ -397,36 +380,105 @@ img {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     padding: 20px;
-}.kit-card {
+}
+
+.kit-card {
     border-radius: 10px;
     overflow: hidden;
     position: relative;
     width: 100%;
-}.card-content {
+    display: flex; /* Added to make flexbox work */
+    flex-direction: column; /* Stack image and content vertically */
+}
+
+.card-content {
     padding: 20px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    flex-grow: 0;
-}.kit-card img {
-    max-width: 100%;
-    height: auto;
+    flex-grow: 1; /* Allow content to grow and fill available space */
+}
+
+.kit-card img {
+    max-width: 100%; /* Changed to make image responsive */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 10px 10px 0 0;
     margin-bottom: 10px;
+    padding: 0px 40px; /* Keep padding */
+    object-fit: contain; /* Added to ensure image fits within its container */
 }
+
 .price-container {
-    font-size: 32px;
+    font-size: 30px;
     display: flex;
-    justify-content: space-between; /* Keep the space between price and button */
+    justify-content: space-between;
     align-items: center;
     margin-top: 10px;
-    padding: 10px 20px; /* Add some padding inside the container */
+    padding: 10px 20px;
     border-radius: 50px;
     background: #CDD79F;
-    position: relative; /* Needed for absolute positioning of the button */
-    z-index: 1; /* Ensure price is above the button */
+    position: relative;
 }
+
 .order-button {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 38px 85px; /* Adjusted padding to be smaller */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 50%;
+    right: 0px; /* Adjusted right position to be closer */
+    transform: translateY(-50%);
+    z-index: 2;
+    font-size: 30px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.order-button:hover {
+    background-color: #333;
+}
+
+.order-text {
+    margin-left: 0;
+}
+/* Snack Page CSS*/
+.product-details {
+    display: flex;
+    margin-top: 20px;
+}
+.product-image {
+    width: 50%;
+}
+.product-image img {
+    width: 100%;
+}
+.product-info {
+    width: 50%;
+    padding: 20px;
+}
+.product-details h2 {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.product-details p {
+    font-size: 24px;
+    line-height: 1.6;
+    color: var(--medium-gray);
+    margin-bottom: 20px;
+}
+.product-details .price {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.product-details .button {
     background-color:var(--black);
     color:var(--white);
     padding: 35px 70px;
@@ -437,21 +489,58 @@ img {
     font-weight: bold;
     transition: background-color 0.3s;
     position: absolute;
-    top: 50%;
-    right: 0px;
-    transform: translateY(-50%);
-    z-index: 2;
-    font-size: 40px;
+    font-size: 20px;
 }
-
-.order-button:hover {
+.product-details .button:hover {
     background-color: #333; /* Slightly lighter black on hover */
 }
-
-.order-text {
-    margin-left: 0;
+.product-details .button-text {
+    margin-right: 0;
+}
+.ingredients {
+    margin-top: 30px;
+    font-size: 48px;
+}
+.ingredients ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+.ingredients li {
+    width: 20%;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.ingredients li img {
+    width: 153px;
+    height: 153px;
+    object-fit: contain;
+}
+.health-benefits {
+    margin-top: 30px; /* Add some space between sections */
 }
 
-.kit-card:hover .order-text { /* Corrected selector */
-    margin-left: 0px;
+.health-benefits h2 {
+    font-size: 64px; 
+    font-style: normal;
+    margin-bottom: 10px;
+}
+
+.health-benefits h3 {
+    font-size: 32px; 
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.health-benefits ul {
+    list-style-type: disc; /* Use bullet points */
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.health-benefits li {
+    margin-bottom: 5px;
+    margin-top: 20px;
 }

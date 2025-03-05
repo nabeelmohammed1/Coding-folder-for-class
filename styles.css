@@ -15,6 +15,7 @@
     --white: #fff;
     --background-color: #EDB8B2; /*Background color for the popup*/
     --popupBackground: rgb(236, 236, 236, 0.74);
+    --editbutton: #e0e0e0;
 }
 /* Basic styles */
 body {
@@ -478,7 +479,7 @@ img {
     font-weight: bold;
     margin-bottom: 20px;
 }
-.product-details .button {
+.product-details .checkoutbutton {
     background-color:var(--black);
     color:var(--white);
     padding: 35px 70px;
@@ -576,7 +577,7 @@ img {
 }
 
 .edit-button {
-    background-color: #e0e0e0;
+    background-color: var(--editbutton);
     border: none;
     padding: 5px 10px;
     border-radius: 4px;

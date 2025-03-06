@@ -314,7 +314,7 @@ img {
 
 .popup-content {
     background-color: var(--background-color);
-    padding: 30px;
+    padding: 25px;
     border-radius: 50px;
     text-align: center;
     font-size: 32px;
@@ -326,6 +326,7 @@ img {
 
 .popup-content img {
     max-width: 450px; /* Adjust as needed */
+    max-height: 400px; /* Adjust as needed */
     margin-bottom: 20px; /* Space between image and text */
     border-radius: 50px;
 }

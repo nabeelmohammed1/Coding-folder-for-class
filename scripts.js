@@ -196,7 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
             cartItems = [];
             localStorage.removeItem('productCartItems');
             updateCartDisplay();
-            alert("Order Placed! Cart has been cleared.");
         });
     }
 

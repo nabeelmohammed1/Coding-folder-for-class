@@ -1,58 +1,166 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Check if the current page is the payment page
-    if (window.location.pathname.includes('payment.html')) {
-        // Function to update the cart display on the payment page
-        function updateCartDisplay() {
-            const cartItems = JSON.parse(localStorage.getItem('productCartItems')) || [];
-            const freeSnacks = JSON.parse(localStorage.getItem('freeSnacks')) || [];
-            const cartItemsContainer = document.querySelector('.item-container');
+    // Function to add an item to the cart
+    function addToCart(item) {
+        let cartItems = JSON.parse(localStorage.getItem('productCartItems')) || [];
 
-            if (cartItemsContainer) {
-                cartItemsContainer.innerHTML = '';
+        // Check if the item already exists in the cart
+        const existingItem = cartItems.find(cartItem => cartItem.name === item.name);
 
-                // Display regular cart items
-                cartItems.forEach(item => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.classList.add('item');
-                    itemDiv.innerHTML = `
-                        <img src="${item.image}" alt="${item.name}">
-                        <div class="item-details">
-                            <span>${item.name}</span>
-                            <span class="price">$${item.price}</span>
-                        </div>
-                        <div class="quantity">1</div>
-                    `;
-                    cartItemsContainer.appendChild(itemDiv);
-                });
-
-                // Display free snacks
-                freeSnacks.forEach(item => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.classList.add('item');
-                    itemDiv.innerHTML = `
-                        <img src="images/freesnack.png" alt="Love Bites">
-                        <div class="item-details">
-                            <span>${item}</span>
-                            <span class="price">Free</span>
-                        </div>
-                        <div class="quantity">1</div>
-                    `;
-                    cartItemsContainer.appendChild(itemDiv);
-                });
-            }
+        if (existingItem) {
+            // If the item exists, increment its quantity
+            existingItem.quantity += 1;
+        } else {
+            // If the item doesn't exist, add it with a quantity of 1
+            item.quantity = 1;
+            cartItems.push(item);
         }
 
+        localStorage.setItem('productCartItems', JSON.stringify(cartItems));
+        updateCartDisplay();
+    }
+
+    // Function to add a free snack to the cart
+    function addFreeSnack(snack) {
+        let freeSnacks = JSON.parse(localStorage.getItem('freeSnacks')) || [];
+
+        // Check if the free snack already exists in the cart
+        const existingSnack = freeSnacks.find(freeSnack => freeSnack.name === snack.name);
+
+        if (existingSnack) {
+            // If the free snack exists, increment its quantity
+            existingSnack.quantity += 1;
+        } else {
+            // If the free snack doesn't exist, add it with a quantity of 1
+            snack.quantity = 1;
+            freeSnacks.push(snack);
+        }
+
+        localStorage.setItem('freeSnacks', JSON.stringify(freeSnacks));
+        updateCartDisplay();
+    }
+
+    // Function to update the cart display
+    function updateCartDisplay() {
+        const cartSummary = document.querySelector('.cart-summary');
+        if (!cartSummary) return;
+
+        const cartItemsContainer = cartSummary.querySelector('.item-container');
+        if (cartItemsContainer) {
+            cartItemsContainer.innerHTML = '';
+
+            // Display regular cart items
+            const cartItems = JSON.parse(localStorage.getItem('productCartItems')) || [];
+            cartItems.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('item');
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="item-details">
+                        <span>${item.name}</span>
+                        <span class="price">$${item.price}</span>
+                    </div>
+                    <div class="quantity">${item.quantity}</div>
+                `;
+                cartItemsContainer.appendChild(itemDiv);
+            });
+
+            // Display free snacks
+            const freeSnacks = JSON.parse(localStorage.getItem('freeSnacks')) || [];
+            freeSnacks.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('item');
+                itemDiv.innerHTML = `
+                    <img src="images/freesnack.png" alt="Love Bites">
+                    <div class="item-details">
+                        <span>${item.name}</span>
+                        <span class="price">Free</span>
+                    </div>
+                    <div class="quantity">${item.quantity}</div>
+                `;
+                cartItemsContainer.appendChild(itemDiv);
+            });
+        }
+    }
+
+    // Handle "Checkout" button click for all snack pages
+    const checkoutButton = document.querySelector('.checkoutbutton');
+    if (checkoutButton) {
+        checkoutButton.addEventListener('click', () => {
+            // Extract product details from the page
+            const productName = document.querySelector('.product-info h2').textContent;
+            const productImage = document.querySelector('.product-image img').src;
+
+            // Extract the price from the <p> elements
+            const productInfoParagraphs = document.querySelectorAll('.product-info p');
+            let productPrice = '';
+
+            // Loop through the <p> elements to find the one containing the price
+            productInfoParagraphs.forEach(p => {
+                const text = p.textContent.trim();
+                // Use a regular expression to match the price format ($XX.XX USD)
+                if (/\$\d+\.\d{2} USD/.test(text)) {
+                    productPrice = text.replace('$', '').replace(' USD', ''); // Extract just the numeric value
+                }
+            });
+
+            // Create the item object
+            const item = {
+                name: productName,
+                price: productPrice,
+                image: productImage
+            };
+
+            // Add the item to the cart
+            addToCart(item);
+
+            // Logging for debugging
+            console.log("Added item to cart:", item);
+            console.log("Cart items:", JSON.parse(localStorage.getItem('productCartItems')));
+
+            // Redirect to the payment page
+            window.location.href = 'payment.html';
+        });
+    }
+
+    // Payment page logic
+    if (window.location.pathname.includes('payment.html')) {
         // Call the function to update the cart display when the page loads
         updateCartDisplay();
 
         // Handle the "Place Order" button click
         const placeOrderButton = document.querySelector('.place-order-button');
+        const orderConfirmationPopup = document.getElementById('order-confirmation-popup');
+        const closePopupButton = document.getElementById('close-payment-popup');
+
         if (placeOrderButton) {
             placeOrderButton.addEventListener('click', () => {
+                // Clear the cart
                 localStorage.removeItem('productCartItems');
                 localStorage.removeItem('freeSnacks');
-                alert('Order placed successfully! Your cart has been cleared.');
-                window.location.href = 'index.html'; // Redirect to the home page or confirmation page
+
+                // Show the popup
+                orderConfirmationPopup.style.display = 'flex';
+
+                // Trigger confetti
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: {
+                        y: 0.6
+                    },
+                    colors: ['#FF9500', '#2AAC7E', '#0D0D80', 'FF3B30']
+                });
+
+                // Update the cart display
+                updateCartDisplay();
+            });
+        }
+
+        // Close the popup when the "OK" button is clicked
+        if (closePopupButton) {
+            closePopupButton.addEventListener('click', () => {
+                orderConfirmationPopup.style.display = 'none';
+                window.location.href = 'index.html'; // Redirect to the home page
             });
         }
     }
@@ -67,49 +175,33 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="popup-content">
                 <img src="images/freesnack.png" alt="Free Snack">
                 <p id="snack-message">🎉 You got a free Love Bite! 🎉</p>
-                <button id="close-popup">OK</button>
+                <button id="close-snack-popup">OK</button>
             </div>
         `;
         document.body.appendChild(popup);
 
-        const closeButton = popup.querySelector("#close-popup");
-
-        let collectedSnacks = JSON.parse(localStorage.getItem('freeSnacks')) || [];
-
-        function updateFreeSnackCartDisplay() {
-            const cartSummary = document.querySelector('.cart-summary');
-            if (cartSummary) {
-                const cartItemsContainer = cartSummary.querySelector('.item-container');
-                if (cartItemsContainer) {
-                    cartItemsContainer.innerHTML = '';
-
-                    collectedSnacks.forEach(item => {
-                        const itemDiv = document.createElement('div');
-                        itemDiv.classList.add('item');
-                        itemDiv.innerHTML = `
-                            <img src="images/freesnack.png" alt="Love Bites">
-                            <div class="item-details">
-                                <span>${item}</span>
-                                <span class="price">Free</span>
-                            </div>
-                            <div class="quantity">1</div>
-                        `;
-                        cartItemsContainer.appendChild(itemDiv);
-                    });
-                }
-            }
-        }
+        const closeSnackPopupButton = popup.querySelector("#close-snack-popup");
 
         collectButton.addEventListener("click", () => {
-            const snack = "Love Bite";
-            collectedSnacks.push(snack);
-            document.getElementById("snack-message").textContent = `🎉 You got a free ${snack}! 🎉`;
+            const snack = { name: "Love Bite" }; // Store free snacks as objects with a name and quantity
+            addFreeSnack(snack);
+
+            // Update the popup message
+            document.getElementById("snack-message").textContent = `🎉 You got a free ${snack.name}! 🎉`;
             popup.style.display = "flex";
-            localStorage.setItem('freeSnacks', JSON.stringify(collectedSnacks));
-            updateFreeSnackCartDisplay();
+
+            // Trigger confetti
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: {
+                    y: 0.6
+                },
+                colors: ['#FF9500', '#2AAC7E', '#0D0D80', 'FF3B30']
+            });
         });
 
-        closeButton.addEventListener("click", () => {
+        closeSnackPopupButton.addEventListener("click", () => {
             popup.style.display = "none";
         });
     }
@@ -134,77 +226,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Cart Code (Product Cart)
-    let cartItems = JSON.parse(localStorage.getItem('productCartItems')) || [];
-
-    function updateCartDisplay() {
-        const cartSummary = document.querySelector('.cart-summary');
-        if (!cartSummary) return;
-
-        const cartItemsContainer = cartSummary.querySelector('.item-container');
-        if (cartItemsContainer) {
-            cartItemsContainer.innerHTML = '';
-
-            cartItems.forEach(item => {
-                const itemDiv = document.createElement('div');
-                itemDiv.classList.add('item');
-                itemDiv.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}">
-                    <div class="item-details">
-                        <span>${item.name}</span>
-                        <span class="price">$${item.price}</span>
-                    </div>
-                    <div class="quantity">1</div>
-                `;
-                cartItemsContainer.appendChild(itemDiv);
-            });
-        }
-    }
-
+    // Update cart display on all pages
     updateCartDisplay();
-
-    function addToCart(item) {
-        cartItems.push(item);
-        localStorage.setItem('productCartItems', JSON.stringify(cartItems));
-        updateCartDisplay();
-    }
-
-    if (window.location.pathname.includes('snackpage_Able.html')) {
-        const checkoutButton = document.querySelector('.checkoutbutton');
-        if (checkoutButton) {
-            checkoutButton.addEventListener('click', () => {
-                const item = {
-                    name: 'Able Protein Bar Kit',
-                    price: '35.00',
-                    image: 'images/snack2.png'
-                };
-                addToCart(item);
-
-                // Logging statements
-                console.log("Added item to cart:", item);
-                console.log("Cart items:", cartItems);
-                console.log("Local storage:", localStorage.getItem('productCartItems'));
-
-                window.location.href = 'payment.html';
-            });
-        }
-    }
-
-    const placeOrderButton = document.querySelector('.place-order-button');
-    if (placeOrderButton) {
-        placeOrderButton.addEventListener('click', () => {
-            cartItems = [];
-            localStorage.removeItem('productCartItems');
-            updateCartDisplay();
-        });
-    }
-
-    window.addEventListener('beforeunload', () => {
-        setTimeout(() => {
-            localStorage.setItem('productCartItems', JSON.stringify(cartItems));
-            localStorage.setItem('freeSnacks', JSON.stringify(collectedSnacks));
-        }, 100);
-    });
-
-    updateFreeSnackCartDisplay();
 });

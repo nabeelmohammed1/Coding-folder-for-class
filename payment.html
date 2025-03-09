@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
     <title>Cart - Healthy Bites</title>
 </head>
 <body>
@@ -69,6 +70,16 @@
             <button class="place-order-button">Place Order</button>
         </main>
     </div>
+
+    <!-- Popup for Order Confirmation -->
+    <div id="order-confirmation-popup" class="payment-popup">
+        <div class="popup-payment-content">
+            <p>Order Placed!</p>
+            <p>Check your email for delivery tracking.</p>
+            <button id="close-payment-popup">OK</button>
+        </div>
+    </div>
+
     <script src="scripts.js"></script>
 </body>
 </html>

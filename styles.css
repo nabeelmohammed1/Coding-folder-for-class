@@ -16,6 +16,7 @@
     --background-color: #EDB8B2; /*Background color for the popup*/
     --popupBackground: rgb(236, 236, 236, 0.74);
     --editbutton: #e0e0e0;
+    --payment-button: #ababab;;
 }
 /* Basic styles */
 body {
@@ -42,6 +43,7 @@ header {
     background-color: white; /* Add a background color to ensure content underneath doesn't show through */
     z-index: 1; /* Ensure the header stays above other content */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+    border-radius: 20px;
 }
 .logo {
     font-size: 26px; /* Example style, customize as needed */
@@ -97,29 +99,39 @@ nav a {
 
 /* Hero Section */
 .hero {
-    background-color:var(--light-green);
-    padding: 41px 29px;
+    background-color: var(--light-green); /* Using your custom color variable */
+    padding: 40px 30px; /* Slightly rounded for consistency */
     border-radius: 20px;
     display: flex;
     align-items: center;
+    gap: 30px; /* Adds space between content and image */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .hero-content {
     flex: 1;
-    padding-left: 78px;
+    padding-left: 80px; /* Consistent spacing */
 }
 
 .hero-title {
-    font-size: 80px; /* Adjusted font size */
+    font-size: 80px;
     font-weight: 500;
-    line-height: 80px; /* Adjusted line height */
+    line-height: 80px;
     margin-bottom: 20px;
+    color: var(--dark-green); /* Add a contrasting color for better readability */
+}
+
+.hero-content p {
+    font-size: 40px; /* Add a subtitle style if needed */
+    font-weight: 400;
+    color: var(--dark-green); /* Match with title color or use a softer shade */
 }
 
 .hero-image {
-    width: 50%; /* Adjusted width */
+    width: 50%;
     height: auto;
     border-radius: 23px;
+    object-fit: cover; /* Ensures the image fits well without distortion */
 }
 
 /* Product Showcase */
@@ -458,6 +470,9 @@ img {
 .product-details {
     display: flex;
     margin-top: 20px;
+    background-color: var(--very-light-green); /* Add background color */
+    border-radius: 20px; /* Rounded corners */
+    padding: 20px; /* Add padding to prevent content from touching the edges */
 }
 .product-image {
     width: 50%;
@@ -507,6 +522,9 @@ img {
 .ingredients {
     margin-top: 30px;
     font-size: 48px;
+    background-color: var(--very-light-green); /* Add background color */
+    border-radius: 20px; /* Rounded corners */
+    padding: 20px; /* Add padding to prevent content from touching the edges */
 }
 .ingredients ul {
     list-style: none;
@@ -527,12 +545,22 @@ img {
 }
 .health-benefits {
     margin-top: 30px; /* Add some space between sections */
+    background-color: var(--very-light-green); /* Add background color */
+    border-radius: 20px; /* Rounded corners */
+    padding: 20px; /* Add padding to prevent content from touching the edges */
 }
 
 .health-benefits h2 {
     font-size: 64px; 
     font-style: normal;
     margin-bottom: 10px;
+}
+
+.health-benefits p {
+    font-size: 24px;
+    line-height: 1.6;
+    color: var(--medium-gray);
+    margin-bottom: 20px;
 }
 
 .health-benefits h3 {
@@ -545,11 +573,13 @@ img {
     list-style-type: disc; /* Use bullet points */
     margin-left: 20px;
     font-size: 20px;
+    color: var(--medium-gray);
 }
 
 .health-benefits li {
     margin-bottom: 5px;
     margin-top: 20px;
+    color: var(--medium-gray);
 }
 
 /* Payment Page */
@@ -591,6 +621,10 @@ img {
     cursor: pointer;
 }
 
+.edit-button:hover {
+    background-color: var(--payment-button)
+}
+
 .price {
     margin-left: auto;
     font-weight: bold;
@@ -622,6 +656,11 @@ img {
     cursor: pointer;
     width: 100%;
     margin-top: 20px;
+    font-size: 24px;
+}
+
+.place-order-button:hover {
+    background-color: #333;
 }
 
 @media (max-width: 768px) {

@@ -11,12 +11,13 @@ Healthy Bites is a web page that showcases a collection of nutritious snack kits
 
 ##  Libraries Used
 - Confetti.js – Used for the celebration animation when a user wins a free snack.
-- No downalod necessary for this library 
+- No downlaod necessary for this library 
+- Internet needed for pop-up to run
 
 ## Instructions to run code
 - Open Zip file called Final Project
 - Each file should be avaiable in the folder
-- Open the code in VS and go to indes.html to open live server 
+- Open the code in VS and go to index.html to open live server 
 - All images are in the image folder as well
 
 ## Features

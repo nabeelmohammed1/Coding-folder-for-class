@@ -1,15 +1,23 @@
 ## Healthy Bites - Snack Kits
+- Kavya and Nabeel's Final Project 
 
 ## Description
 Healthy Bites is a web page that showcases a collection of nutritious snack kits. Users can browse different categories, interact with a vending machine, and even win surprise rewards.
 
 ## Technologies Used
- - HTML – Structure and layout
+- HTML – Structure and layout
 - CSS – Styling and design
 - JavaScript – Interactive features
 
 ##  Libraries Used
 - Confetti.js – Used for the celebration animation when a user wins a free snack.
+- No downalod necessary for this library 
+
+## Instructions to run code
+- Open Zip file called Final Project
+- Each file should be avaiable in the folder
+- Open the code in VS and go to indes.html to open live server 
+- All images are in the image folder as well
 
 ## Features
 - Snack Kit Filtering – Users can filter snack kits by categories such as Low-Cal, Vegan, Dairy-Free, and On-the-Go.

@@ -1,6 +1,9 @@
+// Wait for the DOM to be fully loaded before executing the script
 document.addEventListener('DOMContentLoaded', () => {
+
     // Function to add an item to the cart
     function addToCart(item) {
+        // Retrieve cart items from localStorage or initialize an empty array if none exist
         let cartItems = JSON.parse(localStorage.getItem('productCartItems')) || [];
 
         // Check if the item already exists in the cart
@@ -15,12 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
             cartItems.push(item);
         }
 
+        // Save the updated cart items back to localStorage
         localStorage.setItem('productCartItems', JSON.stringify(cartItems));
+        // Update the cart display to reflect the changes
         updateCartDisplay();
     }
 
     // Function to add a free snack to the cart
     function addFreeSnack(snack) {
+        // Retrieve free snacks from localStorage or initialize an empty array if none exist
         let freeSnacks = JSON.parse(localStorage.getItem('freeSnacks')) || [];
 
         // Check if the free snack already exists in the cart
@@ -35,22 +41,28 @@ document.addEventListener('DOMContentLoaded', () => {
             freeSnacks.push(snack);
         }
 
+        // Save the updated free snacks back to localStorage
         localStorage.setItem('freeSnacks', JSON.stringify(freeSnacks));
+        // Update the cart display to reflect the changes
         updateCartDisplay();
     }
 
     // Function to update the cart display
     function updateCartDisplay() {
+        // Select the cart summary element
         const cartSummary = document.querySelector('.cart-summary');
         if (!cartSummary) return;
 
+        // Select the container for cart items
         const cartItemsContainer = cartSummary.querySelector('.item-container');
         if (cartItemsContainer) {
+            // Clear the current contents of the cart items container
             cartItemsContainer.innerHTML = '';
 
             // Display regular cart items
             const cartItems = JSON.parse(localStorage.getItem('productCartItems')) || [];
             cartItems.forEach(item => {
+                // Create a new div for each item and populate it with item details
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('item');
                 itemDiv.innerHTML = `
@@ -61,12 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="quantity">${item.quantity}</div>
                 `;
+                // Append the item div to the cart items container
                 cartItemsContainer.appendChild(itemDiv);
             });
 
             // Display free snacks
             const freeSnacks = JSON.parse(localStorage.getItem('freeSnacks')) || [];
             freeSnacks.forEach(item => {
+                // Create a new div for each free snack and populate it with snack details
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('item');
                 itemDiv.innerHTML = `
@@ -77,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="quantity">${item.quantity}</div>
                 `;
+                // Append the snack div to the cart items container
                 cartItemsContainer.appendChild(itemDiv);
             });
         }
@@ -174,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         popup.innerHTML = `
             <div class="popup-content">
                 <img src="images/freesnack.png" alt="Free Snack">
-                <p id="snack-message">🎉 You got a free Love Bite! 🎉</p>
+                <p id="snack-message">You got a free Love Bite!</p>
                 <button id="close-snack-popup">OK</button>
             </div>
         `;
